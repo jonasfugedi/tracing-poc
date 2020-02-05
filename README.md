@@ -19,9 +19,21 @@ This is a sample project to show how distributed tracing and log aggregation can
       jaegertracing/all-in-one:1.16
       
 ### 2. Run service A
+
+    mvn exec:java
+    
 ### 3. Run service B
+    
+    mvn exec:java
+    
 ### 4. Run client
 
+    mvn exec:java
+    
+### 5. Check traces Jaeger UI
+
+[Jaeger UI](http://localhost:16686/search)    
+    
 ## Development
 
 ### Build the project
