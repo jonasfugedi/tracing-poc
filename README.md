@@ -30,7 +30,7 @@ This is a sample project to show how distributed tracing and log aggregation can
 
     mvn exec:java
     
-### 5. Check traces Jaeger UI
+### 5. Check traces in Jaeger UI
 
 [Jaeger UI](http://localhost:16686/search)    
     
