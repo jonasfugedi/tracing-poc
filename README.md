@@ -2,7 +2,7 @@
 
 This is a sample project to show how distributed tracing and log aggregation can be solved.
 
-The demo shows a client which makes two calls to a service A which calls another service B. 
+The demo shows a client which makes two calls to a service B which calls another service A. 
  
 Client -> Service B -> Service A
 
