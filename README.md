@@ -30,9 +30,13 @@ The demo shows how the context is propagate between services and threads, as wel
 
 [Jaeger UI](http://localhost:16686/search)    
 
+![Jaeger Screenshot](jaeger.png "Jaeger UI")
+
 ### 6. Check logs in Kibana
 
 [Kibana](http://localhost:5601)
+    
+![Kibana Screenshot](kibana.png "Kibana")
     
 ## Development
 
