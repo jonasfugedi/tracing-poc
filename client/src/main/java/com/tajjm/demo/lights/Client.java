@@ -35,8 +35,8 @@ public class Client {
             MDC.put("trace", span.getContext().getTraceId().toLowerBase16());
             MDC.put("spanId", span.getContext().getSpanId().toLowerBase16());
             logger.info("Calling service");
-            for (int i = 0; i < 10; i++) {
-                try (Scope ignore = tracer.spanBuilderWithExplicitParent("LightServiceClient", span).startScopedSpan()) {
+            for (int i = 0; i < 2; i++) {
+                try (Scope ignore = tracer.spanBuilderWithExplicitParent("call", span).startScopedSpan()) {
                     Span childSpan = tracer.getCurrentSpan();
                     MDC.put("trace", childSpan.getContext().getTraceId().toLowerBase16());
                     MDC.put("spanId", childSpan.getContext().getSpanId().toLowerBase16());
