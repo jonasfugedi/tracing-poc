@@ -8,6 +8,13 @@ Client -> Service B -> Service A
 
 The demo shows how the context is propagate between services and threads, as well as how to use MDC logging to use the tracing to tie the logs together across services for a request.
 
+
+Understanding the context; There is a gRPC context which is stored thread local with the request. In the gRPC context the trace id is stored which then needs to be handed over to any thread working which performs downstream work. The Mapped Diagnostic Context (MDC) is used to decorate the logging with request specific information, e.g. the correlation id, and the MDC is also stored thread local.
+
+* java.lang.ThreadLocal - This class provides thread-local variables.
+* io.grpc.Context -  A context propagation mechanism which can carry scoped-values across API boundaries and between threads.
+* org.slf4j.MDC - Mapped Diagnostic Context decorates the log events.
+
 ## Running the demo
 
 ### 1. Start jaeger, fluentd, elasticsearch and kibana 
@@ -62,8 +69,19 @@ The demo shows how the context is propagate between services and threads, as wel
       -p 9411:9411 \
       jaegertracing/all-in-one:1.16
       
+### Inspecting a container
+
+To enter the container and check the manifest for the service jar
+
+    docker run -it --entrypoint "/bin/sh" tajjm/server-a:1.0-SNAPSHOT
+    cd app
+    jar -xvf service.jar META-INF/MANIFEST.MF && cat META-INF/MANIFEST.MF
+      
 ## TODO
 
 * Containerize the java apps.
 * Create the elasticsearch index for fluentd automatically
+* Common log config
+
+
     
