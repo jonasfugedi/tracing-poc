@@ -4,7 +4,7 @@ This is a sample project to show how distributed tracing and log aggregation can
 
 The demo shows a client which makes two calls to a proxy which calls a service. 
  
-![Project Overview](overview.png "Project overview") 
+![Project Overview](overview.png) 
 
 The demo shows how the context is propagate between services and threads, as well as how to use MDC logging to use the tracing to tie the logs together across services for a request.
 
@@ -39,13 +39,13 @@ Understanding the context; There is a gRPC context which is stored thread local 
 
 [Jaeger UI](http://localhost:16686/search)    
 
-![Jaeger Screenshot](jaeger.png "Jaeger UI")
+![Jaeger Screenshot](jaeger.png)
 
 ### 6. Check logs in Kibana
 
 [Kibana](http://localhost:5601)
     
-![Kibana Screenshot](kibana.png "Kibana")
+![Kibana Screenshot](kibana.png)
     
 ## Development
 
