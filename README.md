@@ -2,12 +2,11 @@
 
 This is a sample project to show how distributed tracing and log aggregation can be solved.
 
-The demo shows a client which makes two calls to a service B which calls another service A. 
+The demo shows a client which makes two calls to a proxy which calls a service. 
  
-Client -> Service B -> Service A
+![Project Overview](overview.png "Project overview") 
 
 The demo shows how the context is propagate between services and threads, as well as how to use MDC logging to use the tracing to tie the logs together across services for a request.
-
 
 Understanding the context; There is a gRPC context which is stored thread local with the request. In the gRPC context the trace id is stored which then needs to be handed over to any thread working which performs downstream work. The Mapped Diagnostic Context (MDC) is used to decorate the logging with request specific information, e.g. the correlation id, and the MDC is also stored thread local.
 
