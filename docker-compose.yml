@@ -1,5 +1,15 @@
 version: '3'
 services:
+#  servera-a:
+#    build: ./server-a
+#    links:
+#      - "fluentd"
+#      - "jaeger"
+#    environment:
+#      - "FLUENTD_SERVER=fluentd"
+#    ports:
+#      - "6791:6791"
+
   fluentd:
     build: ./fluentd
     volumes:

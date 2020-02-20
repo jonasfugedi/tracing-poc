@@ -1,7 +1,6 @@
 package com.tajjm.demo.lights.server.a;
 
 import com.tajjm.demo.lights.Utils;
-import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class ServerA {
-    private static final Logger logger = LoggerFactory.getLogger(ServerA.class);
+public class Server {
+    private static final Logger logger = LoggerFactory.getLogger(Server.class);
 
-    private Server server;
+    private io.grpc.Server server;
 
     private void start() throws IOException {
         int port = 6791;
@@ -30,7 +29,7 @@ public class ServerA {
                 // Use stderr here since the logger may have been reset by its JVM shutdown hook.
                 System.err.println("*** shutting down gRPC server since JVM is shutting down");
                 try {
-                    ServerA.this.stop();
+                    Server.this.stop();
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.err);
                 }
@@ -57,14 +56,20 @@ public class ServerA {
     }
 
     public static void main(String[] args) {
+        if (System.getProperty("FLUENTD_SERVER") == null || System.getProperty("FLUENTD_SERVER").trim().equals("")) {
+            System.setProperty("FLUENTD_SERVER", "127.0.0.1");
+            System.out.println("No system property set for logging to fluentd, default to localhost");
+        } else {
+            System.out.println("Using system property to configure logging to fluentd at " + System.getProperty("FLUENTD_SERVER"));
+        }
         logger.info("Initializing server");
 
-        Utils.initializeTracing("service-a");
+        Utils.initializeTracing("service");
 
-        ServerA serverA = new ServerA();
+        Server server = new Server();
         try {
-            serverA.start();
-            serverA.blockUntilShutdown();
+            server.start();
+            server.blockUntilShutdown();
         } catch (Exception e) {
             logger.error("Error", e);
         }

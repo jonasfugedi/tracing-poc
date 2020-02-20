@@ -6,7 +6,7 @@
     </appender>
 
     <appender name="fluentd" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>127.0.0.1:24224</destination>
+        <destination>${FLUENTD_SERVER}:24224</destination>
 
         <!-- encoder is required -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />

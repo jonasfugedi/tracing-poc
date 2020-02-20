@@ -45,8 +45,8 @@
         <module>proto</module>
         <module>common</module>
         <module>client</module>
-        <module>server-a</module>
-        <module>server-b</module>
+        <module>service</module>
+        <module>proxy</module>
     </modules>
 
     <build>

@@ -1,0 +1,43 @@
+@startuml
+
+package "Application" {
+    [client]
+    [proxy]
+    [service]
+}
+
+client -> proxy
+proxy -> service
+
+client .u.> Tracing
+proxy .u.> Tracing
+service .u.> Tracing
+
+
+client -.> Logging
+proxy -.> Logging
+service -.> Logging
+
+package "Tracing" {
+    (OpenCensus)
+    [Jaeger]
+    OpenCensus -> Jaeger
+}
+
+package "Logging" {
+    [FluentD]
+    [Kibana]
+    [Elasticsearch]
+    (SL4J)
+    (Logback)
+    (LogstashEncoder)
+    SL4J -> Logback
+    Logback -> LogstashEncoder
+    LogstashEncoder --> FluentD
+
+
+    FluentD -> Elasticsearch
+    Elasticsearch -> Kibana
+}
+
+@enduml

@@ -9,10 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>server-b</artifactId>
+    <artifactId>proxy</artifactId>
     <packaging>jar</packaging>
 
-    <name>Server-A</name>
+    <name>Proxy</name>
 
     <dependencies>
         <dependency>
@@ -48,7 +48,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.tajjm.demo.lights.server.b.ServerB</mainClass>
+                    <mainClass>com.tajjm.demo.lights.server.b.Proxy</mainClass>
                 </configuration>
             </plugin>
         </plugins>

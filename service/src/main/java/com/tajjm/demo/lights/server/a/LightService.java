@@ -42,25 +42,4 @@ public class LightService extends LightServiceGrpc.LightServiceImplBase {
             MDC.clear();
         }
     }
-
-    @Override
-    public void light(LightRequest request, StreamObserver<Empty> responseObserver) {
-        responseObserver.onCompleted();
-    }
-
-    @Override
-    public void status(Empty request, StreamObserver<LightStatusResponse> responseObserver) {
-        try {
-            String host = InetAddress.getLocalHost().getHostName();
-            responseObserver.onNext(LightStatusResponse.newBuilder().setHost(host).build());
-            responseObserver.onCompleted();
-        } catch (UnknownHostException e) {
-            responseObserver.onError(e);
-        }
-    }
-
-    @Override
-    public void clear(ClearRequest request, StreamObserver<Empty> responseObserver) {
-        responseObserver.onCompleted();
-    }
 }

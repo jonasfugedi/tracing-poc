@@ -21,16 +21,19 @@ Understanding the context; There is a gRPC context which is stored thread local 
 
     docker-compose up
 
-### 2. Run service A
+### 2. Run service
 
+    cd service
     mvn exec:java
     
-### 3. Run service B
+### 3. Run proxy
     
+    cd proxy
     mvn exec:java
     
 ### 4. Run client
 
+    cd client
     mvn exec:java
     
 ### 5. Check traces in Jaeger UI

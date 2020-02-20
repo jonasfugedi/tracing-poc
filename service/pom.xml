@@ -9,10 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>server-a</artifactId>
+    <artifactId>service</artifactId>
     <packaging>jar</packaging>
 
-    <name>Server-A</name>
+    <name>Service</name>
 
     <dependencies>
         <dependency>
@@ -48,7 +48,13 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.tajjm.demo.lights.server.a.ServerA</mainClass>
+                    <mainClass>com.tajjm.demo.lights.server.a.Server</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>FLUENTD_SERVER</key>
+                            <value>127.0.0.1</value>
+                        </systemProperty>
+                    </systemProperties>
                 </configuration>
             </plugin>
             <plugin>
@@ -60,7 +66,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.tajjm.demo.lights.server.a.ServerA</mainClass>
+                            <mainClass>com.tajjm.demo.lights.server.a.Server</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
